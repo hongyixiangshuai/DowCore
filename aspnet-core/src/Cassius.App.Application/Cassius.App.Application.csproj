@@ -11,8 +11,8 @@
     <RootNamespace>Cassius.App</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Cassius.App.Dapper\Cassius.App.Dapper.csproj" />
     <ProjectReference Include="..\Cassius.App.Core\Cassius.App.Core.csproj" />
+    <ProjectReference Include="..\Cassius.App.Dapper\Cassius.App.Dapper.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="UploadManage\" />
