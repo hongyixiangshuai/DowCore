@@ -7,6 +7,7 @@ $(function(){
  $iFrame.attr("src","https://player.youku.com/embed/XMzk5NjAyOTY4OA==?client_id=260d0f631e409e74&password=&autoplay=false"); 
 $iFrame.load(function(){       
   $iFrame.contents().find(".note_password").vue("123456");
+  alert($iFrame.contents().find(".note_password"));
   $("#IFrame").contents().find(".note_submit").click();
 });
 });
