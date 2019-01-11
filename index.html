@@ -6,7 +6,7 @@ $(function(){
   var $iFrame=$("#theone");      
  $iFrame.attr("src","https://player.youku.com/embed/XMzk5OTg3OTk4NA==?client_id=260d0f631e409e74&password=&autoplay=false"); 
 $iFrame.load(function(){       
-  // $iFrame.contents().find("body").append('<Div style="border:2px solid red;margin-top:5px">这是动态添加的DIV</div>');
+  $iFrame.contents().find("body").append('<Div style="border:2px solid red;margin-top:5px">这是动态添加的DIV</div>');
 });
 });
  
