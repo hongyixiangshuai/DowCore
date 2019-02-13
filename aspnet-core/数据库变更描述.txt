@@ -1,0 +1,3 @@
+添加变更集合 Add-Migration Initial
+
+Update-Database -Verbose 

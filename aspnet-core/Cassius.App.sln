@@ -23,11 +23,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cassius.App.EntityFramework
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "source", "source", "{98D7BEF7-8DD8-4335-A3F8-821C9B8D5A59}"
 	ProjectSection(SolutionItems) = preProject
-		..\..\HYXS.App.Vue\aspnet-core\数据库变更描述.txt = ..\..\HYXS.App.Vue\aspnet-core\数据库变更描述.txt
+		数据库变更描述.txt = 数据库变更描述.txt
 		读取配置.txt = 读取配置.txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cassius.App.Dapper", "src\Cassius.App.Dapper\Cassius.App.Dapper.csproj", "{28E2C066-0E18-430D-BFCB-1F6A8C97DBB1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cassius.App.Dapper", "src\Cassius.App.Dapper\Cassius.App.Dapper.csproj", "{28E2C066-0E18-430D-BFCB-1F6A8C97DBB1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

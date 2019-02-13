@@ -10,7 +10,7 @@
     <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Abp.Castle.Log4Net" Version="4.0.2" />
+    <PackageReference Include="Abp.Castle.Log4Net" Version="4.2.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Cassius.App.Core\Cassius.App.Core.csproj" />
