@@ -1,1 +1,3 @@
 Logs
+/vue/*.lock
+/vue/package-lock.json
