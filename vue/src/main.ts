@@ -4,6 +4,7 @@ import iView from 'iview';
 import {router} from './router/index';
 import 'famfamfam-flags/dist/sprite/famfamfam-flags.css';
 import './theme.less';
+import 'iview/dist/styles/iview.css';
 import Ajax from './lib/ajax';
 import Util from './lib/util';
 import SignalRAspNetCoreHelper from './lib/SignalRAspNetCoreHelper';
