@@ -1,3 +1,5 @@
 Logs
 /vue/*.lock
 /vue/package-lock.json
+/aspnet-core/build/outputs
+*.log
