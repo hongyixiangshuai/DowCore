@@ -31,6 +31,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "helper", "helper", "{7484B6
 		helper\读取配置.txt = helper\读取配置.txt
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dow.Core.Tool", "util\Dow.Core.Tool\Dow.Core.Tool.csproj", "{27891168-EFB6-4BF3-8318-3539F8124C65}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -69,6 +71,10 @@ Global
 		{DD8753B0-7DC5-41F9-AECB-ABB838D983AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD8753B0-7DC5-41F9-AECB-ABB838D983AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD8753B0-7DC5-41F9-AECB-ABB838D983AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27891168-EFB6-4BF3-8318-3539F8124C65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27891168-EFB6-4BF3-8318-3539F8124C65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27891168-EFB6-4BF3-8318-3539F8124C65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27891168-EFB6-4BF3-8318-3539F8124C65}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -82,6 +88,7 @@ Global
 		{22CFE0D2-8DCA-42D7-AD7D-784C3862493F} = {AFAA0841-BD93-466F-B8F4-FB4EEC86F1FC}
 		{E0580562-F8F2-4EBB-B07A-ABFC6F2C314F} = {AFAA0841-BD93-466F-B8F4-FB4EEC86F1FC}
 		{DD8753B0-7DC5-41F9-AECB-ABB838D983AD} = {33977F37-ECDD-4DF1-A7BC-DCC065F839F1}
+		{27891168-EFB6-4BF3-8318-3539F8124C65} = {33977F37-ECDD-4DF1-A7BC-DCC065F839F1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {10B47142-1802-4783-B7FC-AE11A1BF6B09}
