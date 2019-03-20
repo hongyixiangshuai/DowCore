@@ -27,11 +27,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dow.Core.Dapper", "util\Dow
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "helper", "helper", "{7484B61F-7208-4C5B-AB6F-9C9A00D4F274}"
 	ProjectSection(SolutionItems) = preProject
+		基础库设计理念.txt = 基础库设计理念.txt
 		helper\数据库变更描述.txt = helper\数据库变更描述.txt
 		helper\读取配置.txt = helper\读取配置.txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dow.Core.Tool", "util\Dow.Core.Tool\Dow.Core.Tool.csproj", "{27891168-EFB6-4BF3-8318-3539F8124C65}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Dow.Core.Tool", "util\Dow.Core.Tool\Dow.Core.Tool.csproj", "{27891168-EFB6-4BF3-8318-3539F8124C65}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
