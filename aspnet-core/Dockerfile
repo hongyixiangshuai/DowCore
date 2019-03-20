@@ -1,17 +1,13 @@
 #Depending on the operating system of the host machines(s) that will build or run the containers, the image specified in the FROM statement may need to be changed.
 #For more information, please see https://aka.ms/containercompat
 
-FROM mcr.microsoft.com/dotnet/core/runtime:2.2 AS base
+FROM microsoft/dotnet:2.2-aspnetcore-runtime-nanoserver-1809 AS base
 WORKDIR /app
 EXPOSE 80
 
-FROM mcr.microsoft.com/dotnet/core/sdk AS build
+FROM microsoft/dotnet:2.2-sdk-nanoserver-1809 AS build
 WORKDIR /src
 COPY ["src/Dow.Core.Web.Host/Dow.Core.Web.Host.csproj", "src/Dow.Core.Web.Host/"]
-COPY ["src/Dow.Core.Web.Core/Dow.Core.Web.Core.csproj", "src/Dow.Core.Web.Core/"]
-COPY ["src/Dow.Core.Application/Dow.Core.Application.csproj", "src/Dow.Core.Application/"]
-COPY ["src/Dow.Core.Core/Dow.Core.Core.csproj", "src/Dow.Core.Core/"]
-COPY ["src/Dow.Core.EntityFrameworkCore/Dow.Core.EntityFrameworkCore.csproj", "src/Dow.Core.EntityFrameworkCore/"]
 RUN dotnet restore "src/Dow.Core.Web.Host/Dow.Core.Web.Host.csproj"
 COPY . .
 WORKDIR "/src/src/Dow.Core.Web.Host"
