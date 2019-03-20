@@ -1,9 +1,7 @@
-﻿using Abp.Runtime.Caching;
+﻿using System;
+using System.IO;
 using RazorEngine;
 using RazorEngine.Templating;
-using System;
-using System.IO;
-
 namespace Dow.Core.Tool
 {
     public class RazorEngineTemplate
