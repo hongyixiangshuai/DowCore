@@ -7,6 +7,8 @@ using Abp.Domain.Uow;
 using Abp.Runtime.Caching;
 using Abp.Zero.Configuration;
 using Dow.Core.Authorization.Users;
+using Abp.Domain.Repositories;
+using Abp.Organizations;
 
 namespace Dow.Core.Authorization.Roles
 {
@@ -21,7 +23,7 @@ namespace Dow.Core.Authorization.Roles
             IPermissionManager permissionManager, 
             ICacheManager cacheManager, 
             IUnitOfWorkManager unitOfWorkManager,
-            IRoleManagementConfig roleManagementConfig)
+            IRoleManagementConfig roleManagementConfig, IRepository<OrganizationUnit, long> organizationUnitRepository, IRepository<OrganizationUnitRole, long> organizationUnitRoleRepository)
             : base(
                   store,
                   roleValidators, 
@@ -30,7 +32,9 @@ namespace Dow.Core.Authorization.Roles
                   permissionManager,
                   cacheManager, 
                   unitOfWorkManager,
-                  roleManagementConfig)
+                  roleManagementConfig,
+                  organizationUnitRepository,
+                  organizationUnitRoleRepository)
         {
         }
     }
