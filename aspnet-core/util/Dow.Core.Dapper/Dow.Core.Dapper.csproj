@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Abp" Version="4.3.0" />
+    <PackageReference Include="Abp" Version="4.4.0" />
     <PackageReference Include="Dapper" Version="1.60.1" />
   </ItemGroup>
 
