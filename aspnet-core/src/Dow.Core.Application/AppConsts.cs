@@ -1,5 +1,8 @@
 ﻿namespace Dow.Core
 {
+    /// <summary>
+    /// Defines the <see cref="AppConsts" />
+    /// </summary>
     public class AppConsts
     {
         /// <summary>

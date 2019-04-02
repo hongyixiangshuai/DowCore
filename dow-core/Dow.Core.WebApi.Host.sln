@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.489
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dow.Core.WebApi.Host", "Dow.Core.WebApi.Host\Dow.Core.WebApi.Host.csproj", "{47E5A136-7613-4C82-ABC8-8D4DE48F5F5E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F095968B-0227-4B4B-B434-1561C57929EC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{47E5A136-7613-4C82-ABC8-8D4DE48F5F5E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47E5A136-7613-4C82-ABC8-8D4DE48F5F5E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47E5A136-7613-4C82-ABC8-8D4DE48F5F5E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47E5A136-7613-4C82-ABC8-8D4DE48F5F5E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{47E5A136-7613-4C82-ABC8-8D4DE48F5F5E} = {F095968B-0227-4B4B-B434-1561C57929EC}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D23863C1-7836-4ABF-A8A9-2869BA2C9CA9}
+	EndGlobalSection
+EndGlobal

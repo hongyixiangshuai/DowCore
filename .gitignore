@@ -3,3 +3,6 @@ Logs
 /vue/package-lock.json
 /aspnet-core/build/outputs
 *.log
+/dow-core/.vs
+/dow-core/Dow.Core.WebApi.Host/obj
+/dow-core/Dow.Core.WebApi.Host/bin

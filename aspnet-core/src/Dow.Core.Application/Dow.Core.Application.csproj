@@ -13,4 +13,10 @@
   <ItemGroup>
     <ProjectReference Include="..\Dow.Core.Core\Dow.Core.Core.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Update="AppConsts.cs">
+      <ExcludeFromSourceAnalysis>True</ExcludeFromSourceAnalysis>
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
+  </ItemGroup>
 </Project>

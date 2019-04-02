@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Abp.Reflection.Extensions;
+using System;
 using System.IO;
-using Abp.Reflection.Extensions;
 
 namespace Dow.Core
 {
