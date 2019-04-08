@@ -1,36 +1,76 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Abp.Authorization;
-using Abp.Authorization.Users;
-using Abp.MultiTenancy;
-using Abp.Runtime.Security;
-using Abp.UI;
-using Dow.Core.Authentication.External;
-using Dow.Core.Authentication.JwtBearer;
-using Dow.Core.Authorization;
-using Dow.Core.Authorization.Users;
-using Dow.Core.Models.TokenAuth;
-using Dow.Core.MultiTenancy;
-
-namespace Dow.Core.Controllers
+﻿namespace Dow.Core.Controllers
 {
+    using Abp.Authorization;
+    using Abp.Authorization.Users;
+    using Abp.MultiTenancy;
+    using Abp.Runtime.Security;
+    using Abp.UI;
+    using Dow.Core.Authentication.External;
+    using Dow.Core.Authentication.JwtBearer;
+    using Dow.Core.Authorization;
+    using Dow.Core.Authorization.Users;
+    using Dow.Core.Models.TokenAuth;
+    using Dow.Core.MultiTenancy;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc;
+    using System;
+    using System.Collections.Generic;
+    using System.IdentityModel.Tokens.Jwt;
+    using System.Linq;
+    using System.Security.Claims;
+    using System.Threading.Tasks;
+
+    /// <summary>
+    /// Defines the <see cref="TokenAuthController" />
+    /// </summary>
     [Route("api/[controller]/[action]")]
     public class TokenAuthController : CoreControllerBase
     {
+        /// <summary>
+        /// Defines the _logInManager
+        /// </summary>
         private readonly LogInManager _logInManager;
+
+        /// <summary>
+        /// Defines the _tenantCache
+        /// </summary>
         private readonly ITenantCache _tenantCache;
+
+        /// <summary>
+        /// Defines the _abpLoginResultTypeHelper
+        /// </summary>
         private readonly AbpLoginResultTypeHelper _abpLoginResultTypeHelper;
+
+        /// <summary>
+        /// Defines the _configuration
+        /// </summary>
         private readonly TokenAuthConfiguration _configuration;
+
+        /// <summary>
+        /// Defines the _externalAuthConfiguration
+        /// </summary>
         private readonly IExternalAuthConfiguration _externalAuthConfiguration;
+
+        /// <summary>
+        /// Defines the _externalAuthManager
+        /// </summary>
         private readonly IExternalAuthManager _externalAuthManager;
+
+        /// <summary>
+        /// Defines the _userRegistrationManager
+        /// </summary>
         private readonly UserRegistrationManager _userRegistrationManager;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TokenAuthController"/> class.
+        /// </summary>
+        /// <param name="logInManager">The logInManager<see cref="LogInManager"/></param>
+        /// <param name="tenantCache">The tenantCache<see cref="ITenantCache"/></param>
+        /// <param name="abpLoginResultTypeHelper">The abpLoginResultTypeHelper<see cref="AbpLoginResultTypeHelper"/></param>
+        /// <param name="configuration">The configuration<see cref="TokenAuthConfiguration"/></param>
+        /// <param name="externalAuthConfiguration">The externalAuthConfiguration<see cref="IExternalAuthConfiguration"/></param>
+        /// <param name="externalAuthManager">The externalAuthManager<see cref="IExternalAuthManager"/></param>
+        /// <param name="userRegistrationManager">The userRegistrationManager<see cref="UserRegistrationManager"/></param>
         public TokenAuthController(
             LogInManager logInManager,
             ITenantCache tenantCache,
@@ -49,6 +89,11 @@ namespace Dow.Core.Controllers
             _userRegistrationManager = userRegistrationManager;
         }
 
+        /// <summary>
+        /// The Authenticate
+        /// </summary>
+        /// <param name="model">The model<see cref="AuthenticateModel"/></param>
+        /// <returns>The <see cref="Task{AuthenticateResultModel}"/></returns>
         [HttpPost]
         public async Task<AuthenticateResultModel> Authenticate([FromBody] AuthenticateModel model)
         {
@@ -63,18 +108,27 @@ namespace Dow.Core.Controllers
             return new AuthenticateResultModel
             {
                 AccessToken = accessToken,
-                EncryptedAccessToken = GetEncrpyedAccessToken(accessToken),
+                EncryptedAccessToken = GetEncryptedAccessToken(accessToken),
                 ExpireInSeconds = (int)_configuration.Expiration.TotalSeconds,
                 UserId = loginResult.User.Id
             };
         }
 
+        /// <summary>
+        /// The GetExternalAuthenticationProviders
+        /// </summary>
+        /// <returns>The <see cref="List{ExternalLoginProviderInfoModel}"/></returns>
         [HttpGet]
         public List<ExternalLoginProviderInfoModel> GetExternalAuthenticationProviders()
         {
             return ObjectMapper.Map<List<ExternalLoginProviderInfoModel>>(_externalAuthConfiguration.Providers);
         }
 
+        /// <summary>
+        /// The ExternalAuthenticate
+        /// </summary>
+        /// <param name="model">The model<see cref="ExternalAuthenticateModel"/></param>
+        /// <returns>The <see cref="Task{ExternalAuthenticateResultModel}"/></returns>
         [HttpPost]
         public async Task<ExternalAuthenticateResultModel> ExternalAuthenticate([FromBody] ExternalAuthenticateModel model)
         {
@@ -90,7 +144,7 @@ namespace Dow.Core.Controllers
                         return new ExternalAuthenticateResultModel
                         {
                             AccessToken = accessToken,
-                            EncryptedAccessToken = GetEncrpyedAccessToken(accessToken),
+                            EncryptedAccessToken = GetEncryptedAccessToken(accessToken),
                             ExpireInSeconds = (int)_configuration.Expiration.TotalSeconds
                         };
                     }
@@ -133,6 +187,11 @@ namespace Dow.Core.Controllers
             }
         }
 
+        /// <summary>
+        /// The RegisterExternalUserAsync
+        /// </summary>
+        /// <param name="externalUser">The externalUser<see cref="ExternalAuthUserInfo"/></param>
+        /// <returns>The <see cref="Task{User}"/></returns>
         private async Task<User> RegisterExternalUserAsync(ExternalAuthUserInfo externalUser)
         {
             var user = await _userRegistrationManager.RegisterAsync(
@@ -159,6 +218,11 @@ namespace Dow.Core.Controllers
             return user;
         }
 
+        /// <summary>
+        /// The GetExternalUserInfo
+        /// </summary>
+        /// <param name="model">The model<see cref="ExternalAuthenticateModel"/></param>
+        /// <returns>The <see cref="Task{ExternalAuthUserInfo}"/></returns>
         private async Task<ExternalAuthUserInfo> GetExternalUserInfo(ExternalAuthenticateModel model)
         {
             var userInfo = await _externalAuthManager.GetUserInfo(model.AuthProvider, model.ProviderAccessCode);
@@ -170,6 +234,10 @@ namespace Dow.Core.Controllers
             return userInfo;
         }
 
+        /// <summary>
+        /// The GetTenancyNameOrNull
+        /// </summary>
+        /// <returns>The <see cref="string"/></returns>
         private string GetTenancyNameOrNull()
         {
             if (!AbpSession.TenantId.HasValue)
@@ -180,6 +248,13 @@ namespace Dow.Core.Controllers
             return _tenantCache.GetOrNull(AbpSession.TenantId.Value)?.TenancyName;
         }
 
+        /// <summary>
+        /// The GetLoginResultAsync
+        /// </summary>
+        /// <param name="usernameOrEmailAddress">The usernameOrEmailAddress<see cref="string"/></param>
+        /// <param name="password">The password<see cref="string"/></param>
+        /// <param name="tenancyName">The tenancyName<see cref="string"/></param>
+        /// <returns>The <see cref="Task{AbpLoginResult{Tenant, User}}"/></returns>
         private async Task<AbpLoginResult<Tenant, User>> GetLoginResultAsync(string usernameOrEmailAddress, string password, string tenancyName)
         {
             var loginResult = await _logInManager.LoginAsync(usernameOrEmailAddress, password, tenancyName);
@@ -193,6 +268,12 @@ namespace Dow.Core.Controllers
             }
         }
 
+        /// <summary>
+        /// The CreateAccessToken
+        /// </summary>
+        /// <param name="claims">The claims<see cref="IEnumerable{Claim}"/></param>
+        /// <param name="expiration">The expiration<see cref="TimeSpan?"/></param>
+        /// <returns>The <see cref="string"/></returns>
         private string CreateAccessToken(IEnumerable<Claim> claims, TimeSpan? expiration = null)
         {
             var now = DateTime.UtcNow;
@@ -209,6 +290,11 @@ namespace Dow.Core.Controllers
             return new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken);
         }
 
+        /// <summary>
+        /// The CreateJwtClaims
+        /// </summary>
+        /// <param name="identity">The identity<see cref="ClaimsIdentity"/></param>
+        /// <returns>The <see cref="List{Claim}"/></returns>
         private static List<Claim> CreateJwtClaims(ClaimsIdentity identity)
         {
             var claims = identity.Claims.ToList();
@@ -225,7 +311,12 @@ namespace Dow.Core.Controllers
             return claims;
         }
 
-        private string GetEncrpyedAccessToken(string accessToken)
+        /// <summary>
+        /// The GetEncryptedAccessToken
+        /// </summary>
+        /// <param name="accessToken">The accessToken<see cref="string"/></param>
+        /// <returns>The <see cref="string"/></returns>
+        private string GetEncryptedAccessToken(string accessToken)
         {
             return SimpleStringCipher.Instance.Encrypt(accessToken, AppConsts.DefaultPassPhrase);
         }
